@@ -2,13 +2,13 @@ class Mover(object):
     
     def __init__(self):
         self.location = PVector(random(100),random(100))
-        self.velocity = PVector(random(-2,2), random(-2,2))
+        self.velocity = PVector(0,0)
         self.topspeed = 3
     
     def update(self):
         self.mouse = PVector(mouseX,  mouseY)
         self.mouse.sub(self.location)
-        self.mouse.setMag(0.5)
+        self.mouse.setMag(0.2)
         self.acceleration = self.mouse
         self.velocity.add(self.acceleration)
         self.velocity.limit(self.topspeed)
@@ -43,5 +43,5 @@ def draw():
     
     global mover
     mover.update()
-    mover.checkEdges()
+    #mover.checkEdges()
     mover.display()    
